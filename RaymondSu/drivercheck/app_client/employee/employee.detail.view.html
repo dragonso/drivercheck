@@ -1,0 +1,32 @@
+<navigation></navigation>
+
+<div class="container">
+    <page-header content="vm.pageHeader"></page-header>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="error">{{ vm.message }}</div>
+            <h2>{{ vm.emp.name }}</h2>
+            <h2>{{ vm.emp.address }}</h2>
+            <a href="/auth/employee/test/create/{{vm.emp.companyId }}/{{vm.emp._id}}">Add New Test</a>
+            <div class="row list-group">
+                <div class="col-xs-12 list-group-item" ng-repeat="test in vm.emp.tests | orderBy:'-testDate'">
+                    <h4>{{ test.result =='true' ?'PASSED':'FAILED'}}</h4>
+                    <h4>{{ test.testDate | date:'yyyy-MM-dd'}}</h4>
+
+                    <p>
+                        <a href="/auth/employee/test/edit/{{vm.emp.companyId }}/{{vm.emp._id}}/{{test._id}}">Edit</a>
+                    </p>
+                   <p>
+                        <a href='#' ng-click="vm.deleteTest(vm.emp.companyId,vm.emp._id,test._id)">Delete</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="lead">{{ vm.sidebar.content }}</p>
+        </div>
+    </div>
+
+    <footer-generic></footer-generic>
+</div>

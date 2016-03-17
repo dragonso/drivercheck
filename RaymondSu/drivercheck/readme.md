@@ -1,0 +1,4 @@
+-Change the dbURI in app_api\models\db.js to the mongodb connection
+-The app is running on port 8888
+-Username: test@test.com password: testtest
+-run.bat to launch the web site

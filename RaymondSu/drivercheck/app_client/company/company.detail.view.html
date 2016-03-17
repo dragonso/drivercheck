@@ -1,0 +1,39 @@
+﻿<navigation></navigation>
+
+<div class="container">
+    <page-header content="vm.pageHeader"></page-header>
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <div class="error">{{ vm.message }}</div>
+            <h2>{{ vm.company.name }}</h2>
+            <a href="/auth/employee/create/{{vm.company._id}}">Add New Employee</a>
+            <input type="text" class="form-control" id="filtername" placeholder="search by name" ng-model="filterName">
+            <div class="row list-group">
+                <div class="col-xs-12 list-group-item" ng-repeat="emp in vm.company.employees | filter:{name:filterName}">
+                    <h4>{{ emp.name }}</h4>
+
+                    <p>
+                        <span class="label label-warning label-facility">
+                            {{ emp.name }}
+                        </span>
+                    </p>
+                    <p>
+                        <a href="/auth/employee/edit/{{vm.company._id}}/{{emp._id}}">Edit</a>
+                    </p>
+                    <p>
+                        <a href="/auth/employee/detail/{{vm.company._id}}/{{emp._id}}">Detail</a>
+                    </p>
+                    <p>
+                        <a href='#' ng-click="vm.deleteEmployee(vm.company._id,emp._id)">Delete</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4">
+            <p class="lead">{{ vm.sidebar.content }}</p>
+        </div>
+    </div>
+
+    <footer-generic></footer-generic>
+</div>
